@@ -8,14 +8,9 @@ class Mock {
 
   init () {
     this.parseSchema(this.schema)
-    this.wrapForEle()
   }
   getOutput () {
     return JSON.stringify(JSON.parse(this.output), null, 2)
-  }
-  // 为新零售数据包裹json
-  wrapForEle () {
-    this.output = '{"error_no": 0,"error_msg": "",' + this.output.substring(1)
   }
   parseSchema (schema, length = 1) {
     for (let i = 0; i < length; i++) {

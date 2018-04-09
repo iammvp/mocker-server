@@ -1,6 +1,18 @@
 /* 默认 schema */
 const defaultSchema = [
   {
+    'key': 'errmsg',
+    'type': 'exactly',
+    'condition': '',
+    'placeholder': '错误信息'
+  },
+  {
+    'key': 'errno',
+    'type': 'interge',
+    'condition': '',
+    'placeholder': '接口状态码'
+  },
+  {
     'key': 'result',
     'isRoot': true,
     'type': 'array',

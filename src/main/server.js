@@ -32,7 +32,7 @@ function startServer (event, isRestart = false) {
           json = file
         }
         app.get(s.path, (req, res) => {
-          res.send(json)
+          res.send(JSON.parse(json))
         })
       })
     })
@@ -41,7 +41,7 @@ function startServer (event, isRestart = false) {
       mock.init()
       const data = mock.getOutput()
       app.get(s.path, (req, res) => {
-        res.send(data)
+        res.send(JSON.parse(data))
       })
     })
     server = app.listen(9999, () => {
