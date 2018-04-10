@@ -2,8 +2,8 @@
   <div class="section">
     <div class="singleProperty" v-for="(s,index) in schema" :key="index" :style="paddingLeft">
       <div class="row">
-        <input class="key" type="text" v-model="s.key" :style="inputStyle">
-        <select class="type" v-model="s.type" @change="changeType(s)" :style="inputStyle">
+        <input class="key" type="text" v-model="s.key" :style="inputStyle" :disabled="s.isRoot === true">
+        <select class="type" v-model="s.type" @change="changeType(s)" :style="inputStyle" :disabled="s.isRoot === true">
           <option  v-for="(t, tindex) in types" :key="tindex" :value="t.key">{{t.desc}}</option>
         </select>
         <input v-if="s.placeholder" class="condition" type="text" :placeholder="s.placeholder" :title="s.placeholder" v-model="s.condition" :style="inputStyle">

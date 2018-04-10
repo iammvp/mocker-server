@@ -37,7 +37,7 @@ function startServer (event, isRestart = false) {
       })
     })
     schemaLists.forEach(s => {
-      const mock = new Mock(s.schema)
+      const mock = new Mock(s.schema[0].schema)// ignore ROOT key
       mock.init()
       const data = mock.getOutput()
       app.get(s.path, (req, res) => {
