@@ -46,7 +46,7 @@ export default {
       this.$notify.error({message: '检测到相同的路径同时启动,请检查配置', duration: 2000})
     })
     ipcRenderer.on('updateStatus', (event, message) => {
-      this.$notify.success({message: message, duration: 2000})
+      this.$notify.success({message: message, duration: 0})
     })
   }
 }

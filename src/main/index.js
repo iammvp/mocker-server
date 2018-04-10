@@ -115,7 +115,7 @@ app.on('before-quit', () => {
   }
 })
 autoUpdater.on('update-available', (info) => {
-  sendStatusToWindow('检测到新版本,后台自动下载')
+  sendStatusToWindow('检测到新版本,后台自动下载,下载完成会提示')
 })
 autoUpdater.on('error', (err) => {
   sendStatusToWindow(err)
