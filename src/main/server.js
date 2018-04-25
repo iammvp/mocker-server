@@ -1,15 +1,20 @@
 import fs from 'fs'
 import Mock from '../lib/Mock'
 const express = require('express')
+const cors = require('cors')
 let app = null
 let server = null
 
 function startServer (event, isRestart = false) {
   app = express()
   // set for cros
+  const issue2options = {
+    origin: true,
+    methods: ['GET'],
+    credentials: true,
+    maxAge: 3600
+  }
   app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
     res.header('Expires', '-1')
     res.header('Pragma', 'no-cache')
@@ -31,7 +36,8 @@ function startServer (event, isRestart = false) {
         } else {
           json = file
         }
-        app.get(s.path, (req, res) => {
+        app.options(s.path, cors(issue2options))
+        app.get(s.path, cors(issue2options), (req, res) => {
           res.send(JSON.parse(json))
         })
       })
@@ -40,7 +46,8 @@ function startServer (event, isRestart = false) {
       const mock = new Mock(s.schema[0].schema)// ignore ROOT key
       mock.init()
       const data = mock.getOutput()
-      app.get(s.path, (req, res) => {
+      app.options(s.path, cors(issue2options))
+      app.get(s.path, cors(issue2options), (req, res) => {
         res.send(JSON.parse(data))
       })
     })

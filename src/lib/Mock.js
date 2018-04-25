@@ -131,7 +131,11 @@ class Mock {
      * @param {object} field
      */
   handleExactlyType (field) {
-    this.output += JSON.stringify(field.condition || '未输入定值')
+    if (!isNaN(parseFloat(field.condition)) && isFinite(field.condition)) {
+      this.output += JSON.stringify(Number(field.condition))
+    } else {
+      this.output += JSON.stringify(field.condition || '未输入定值')
+    }
   }
   /**
      * handle word type, default length 10

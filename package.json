@@ -1,6 +1,6 @@
 {
   "name": "mocker-server",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "",
   "description": "json数据服务器",
   "license": null,
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "cors": "^2.8.4",
     "element-ui": "^2.2.2",
     "express": "^4.16.3",
     "lorem-ipsum": "^1.0.4",
